@@ -41,7 +41,9 @@ class Executor:
             if operation.qubit_positions[0] == operation.qubit_positions[1]+1:
                 pass
             elif operation.qubit_positions[0]+1 == operation.qubit_positions[1]:
-                op_matrix[[0, 1, 2, 3]] = op_matrix[[0, 2, 3, 1]]
+                # transform operations matrix to correspond reversed qubits order
+                op_matrix[[0, 1, 2, 3]] = op_matrix[[0, 2, 1, 3]]  # swap rows 2 and 3
+                op_matrix[:, [1, 2]] = op_matrix[:, [2, 1]]        # swap columns 2 and 3
             else:
                 raise NotImplementedError('applying on contiguous qubits implemented only')
         pos = min(operation.qubit_positions)
