@@ -22,3 +22,11 @@ def test_operation_swap():
     c.swap.on(1, 0)
     state = c.execute()
     assert np.array_equal(state, [0, 0, 1, 0])
+
+
+def test_operation_swap_not_adjacent():
+    c = Circuit(qubit_count=3)
+    c.initialize([1, 0, 0])
+    c.swap.on(0, 2)
+    state = c.execute()
+    assert np.array_equal(state, [0, 0, 0, 0, 1, 0, 0, 0])
