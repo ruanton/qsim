@@ -46,7 +46,8 @@ def test_base_operations():
     c.h.on(1)
     c.r.on(2, angle=np.pi/4)
     c.cnot.on(1, 2)
-    assert len(c.operations) == 7
+    c.swap.on(0, 1)
+    assert len(c.operations) == 8
     assert np.array_equal(c.operations[2].op_matrix, np.array([[1, 0], [0, -1]]))
     assert c.operations[0].qubit_positions == (0,)
     assert c.operations[1].qubit_positions == (1,)
@@ -55,6 +56,7 @@ def test_base_operations():
     assert c.operations[4].qubit_positions == (1,)
     assert c.operations[5].qubit_positions == (2,)
     assert c.operations[6].qubit_positions == (1, 2)
+    assert c.operations[7].qubit_positions == (0, 1)
 
 
 def test_execute():

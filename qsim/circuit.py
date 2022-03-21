@@ -23,7 +23,7 @@ class Circuit:
 
         # add base quantum operations
         from qsim import OperationX, OperationY, OperationZ, OperationIdentity
-        from qsim import OperationHadamard, OperationCNOT, OperationR
+        from qsim import OperationHadamard, OperationCNOT, OperationSWAP, OperationR
         self.x = OperationX(self)
         self.y = OperationY(self)
         self.z = OperationZ(self)
@@ -31,6 +31,7 @@ class Circuit:
         self.h = OperationHadamard(self)
         self.r = OperationR(self)
         self.cnot = OperationCNOT(self)
+        self.swap = OperationSWAP(self)
 
         # set default quantum operation executor backend
         from qsim import Executor

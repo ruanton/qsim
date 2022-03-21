@@ -7,4 +7,5 @@ from .op_z import OperationZ
 from .op_r import OperationR
 from .op_hadamard import OperationHadamard
 from .op_cnot import OperationCNOT
+from .op_swap import OperationSWAP
 from .executor import Executor
